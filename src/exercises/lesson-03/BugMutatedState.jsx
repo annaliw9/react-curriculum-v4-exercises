@@ -10,11 +10,10 @@
 
 import { useState } from 'react';
 export default function BugMutatedState() {
-  let [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   function handleAdd() {
-    count++;
-    setCount(count);
+    setCount((prev) => prev + 1);
   }
 
   return (
@@ -26,4 +25,4 @@ export default function BugMutatedState() {
 }
 
 // Explanation:
-// (Write your explanation here)
+// The issue with this component is that setCount(count+1) is using the current value of count to update the state. This can lead to unexpected behavior if multiple updates are made in quick succession, as the state may not have updated yet. Instead, we should use the functional form of setCount, which takes a function that receives the previous state ans returns the new state. This ensures that we are alsways working with the most up-to-date value of count, even if multiple updates are queued. Also, we should use const instead of let for the count variable because the useState hook returns a constant value that should not be reassigned.

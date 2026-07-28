@@ -15,10 +15,10 @@ export default function BugEffectLoop() {
 
   useEffect(() => {
     setCount(count + 1);
-  });
+  }, []);
 
   return <p>Bug 1 Count: {count}</p>;
 }
 
-// Explanation:
-// (Write your explanation here)
+//Explanation:
+//The problem with this component is that the useEffect hook is being called on every render, which causes the setCount function to be called repeatedly and creates an infinite loop. To fix this, we need to add an empty dependency array as the second argument to the useEffect hook. This will ensure that the effect only runs once when the component mounts, and not on every render.
