@@ -6,7 +6,8 @@ export default function BugEventPropagation() {
     alert("RED BOX CLICKED ❌ Don't show me!");
   }
 
-  function handleInnerClick() {
+  function handleInnerClick(e) {
+    e.stopPropagation();
     alert('Button Clicked ✅');
   }
 
@@ -22,3 +23,6 @@ export default function BugEventPropagation() {
     </>
   );
 }
+
+//EXPLANATION:
+//There are two click events in this component: one for the outer div and one for the inner button. When the button is clicked, the event bubbles up to the outer div, triggering both click hadlers. To prevent this, we use e.stopPropagation() in the inner button's click handler, which stops the event from propagating to the outer div. This ensures that only the inner button's action triggers an alert when clicked.
