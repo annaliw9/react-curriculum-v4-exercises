@@ -65,6 +65,16 @@ export default function StudentWork() {
   );
 
   filteredBooks = filterBooksByGenre(filteredBooks, selectedGenres);
+  // const filteredBooks = useMemo(() => {
+  //   const lower = searchTerm.toLowerCase();
+  //   const result = bookData.filter(
+  //     (book) =>
+  //       book.title.toLowerCase().includes(lower) ||
+  //       book.author.toLowerCase().includes(lower)
+  //   );
+
+  //   return filterBooksByGenre(result, selectedGenres);
+  // }, [searchTerm, selectedGenres]);
 
   return (
     <div className={styles.dashboard}>
